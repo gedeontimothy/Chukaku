@@ -336,29 +336,29 @@
 
         End Function
 
-        Public Shared Function root(Optional path As String = Nothing) As String
+        Public Shared Function root(Optional ByVal path As String = Nothing) As String
 
             Return Core.Supports.Dir.root(path)
 
         End Function
 
-        Public Shared Function is_file(f_path)
+        Public Shared Function is_file(ByVal f_path as String)
 
             Return Core.Supports.File.is_file(f_path)
 
         End Function
 
-        Public Shared Function is_dir(path)
+        Public Shared Function is_dir(ByVal path As String)
 
             Return Core.Supports.Dir.is_dir(path)
 
         End Function
 
-        Public Shared Function file_gets_contents(path)
+        Public Shared Function file_gets_contents(ByVal path As String, Optional ByVal toString As Boolean = True)
 
             Dim file = New Core.Supports.File(path)
 
-            Return ""
+            Return file.getContents()
 
         End Function
 
