@@ -354,11 +354,25 @@
 
         End Function
 
-        Public Shared Function file_gets_contents(ByVal path As String, Optional ByVal toString As Boolean = True)
+        Public Shared Function file_gets_line(ByVal path As String, ByVal line As Integer)
+
+            Dim file = file_gets_contents(path, False)
+
+            If is_array(file) And file.Length > 0 Then
+
+                Return file(line - 1)
+
+            End If
+
+            Return Nothing
+
+        End Function
+        
+        Public Shared Function file_gets_contents(ByVal path As String, Optional ByVal toText As Boolean = True)
 
             Dim file = New Core.Supports.File(path)
 
-            Return file.getContents()
+            Return file.getContents(toText)
 
         End Function
 
