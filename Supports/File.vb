@@ -3,7 +3,7 @@ Namespace Global.Core.Supports
 
     Public Class File
 
-        Private current_file_path As String
+        Private current_file_path As String = Nothing
 
         Sub New(Optional ByVal path = Nothing)
 
@@ -14,6 +14,18 @@ Namespace Global.Core.Supports
             End If
 
         End Sub
+
+        Public Function currentExists()
+
+            If Me.current_file_path IsNot Nothing Then
+
+                Return exists(Me.current_file_path)
+
+            End If
+
+            Return Nothing
+
+        End Function
 
         Public Shared Function exists(ByVal file_path As String) As Boolean
 
