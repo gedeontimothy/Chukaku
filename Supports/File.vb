@@ -27,6 +27,28 @@ Namespace Global.Core.Supports
 
         End Function
 
+        Public Function getContents(Optional ByVal toString As Boolean = True)
+
+            If currentExists() = True Then
+
+                Dim val = System.IO.File.ReadAllLines(Me.current_file_path)
+
+                If toString = True Then
+
+                    Return Join(val, vbLf)
+
+                End If
+
+                Return val
+
+            End If
+
+            Helper.out_red("<" & current_file_path & "> File does Not exist !")
+
+            Return Nothing
+
+        End Function
+
         Public Shared Function exists(ByVal file_path As String) As Boolean
 
             Return System.IO.File.Exists(file_path)
