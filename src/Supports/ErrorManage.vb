@@ -1,0 +1,66 @@
+﻿Namespace Global.Core.Supports
+
+    Public MustInherit Class ErrorManage
+
+        Protected error_message(-1) As String
+
+        Public Function getError(Optional ByVal key = Nothing)
+
+            If key IsNot Nothing Then
+
+                Return Me.error_message(key)
+
+            End If
+
+            Return Me.error_message
+
+        End Function
+
+        Public Function getLastError()
+
+            Return Me.error_message(Me.error_message.Length - 1)
+
+        End Function
+
+        Public Function getFirstError()
+
+            Return Me.error_message(0)
+
+        End Function
+
+        Protected Sub setError(ByVal message() As String)
+
+            Me.error_message = message
+
+        End Sub
+
+        Protected Function redimError() As Integer
+
+            Dim dms = Me.error_message.Length
+
+            ReDim Preserve Me.error_message(dms)
+
+            Return dms
+
+        End Function
+
+        Protected Sub addError(ByVal message As String, Optional out As Boolean = True)
+
+            Dim key As Integer = Me.redimError()
+
+            If out = True Then
+
+                Me.error_message(key) = Helper.title("Error N°" & key + 1, "||", "=") & Helper.out_text(message)
+
+            Else
+
+                Me.error_message(key) = message
+
+            End If
+
+        End Sub
+
+
+    End Class
+
+End Namespace

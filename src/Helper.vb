@@ -1,4 +1,5 @@
-﻿Namespace Global
+﻿Imports System.IO
+Namespace Global
 
     Public Class Helper
 
@@ -52,7 +53,7 @@
 
             While loop_
 
-                out_inline(message(0), False)
+                out(message(0), False)
 
                 inp = Console.ReadLine()
 
@@ -90,7 +91,7 @@
 
             While loop_
 
-                out_inline(message(0), False)
+                out(message(0), False)
 
                 inp = Console.ReadLine()
 
@@ -136,6 +137,12 @@
 
         Public Shared Sub out(text, ByVal Optional lf_ = True, Optional tab = Nothing)
 
+            Console.Write(out_text(text, lf_, tab))
+
+        End Sub
+
+        Public Shared Function out_text(ByVal text, ByVal Optional lf_ = True, ByVal Optional tab = Nothing) As String
+
             tab = getTab(tab)
 
             lf_ = lf(lf_)
@@ -146,25 +153,9 @@
 
             End If
 
-            Console.Write(lf_ & tab & text.ToString)
+            Return lf_ & tab & text.ToString
 
-        End Sub
-
-        Public Shared Sub out_inline(ByVal text, ByVal Optional lf_ = True, ByVal Optional tab = Nothing)
-
-            tab = getTab(tab)
-
-            lf_ = lf(lf_)
-
-            If (text Is Nothing) Then
-
-                text = ""
-
-            End If
-
-            Console.Write(lf_ & tab & text.ToString)
-
-        End Sub
+        End Function
 
         ' <-- OUT STOP =======|
 
@@ -177,7 +168,19 @@
 
 
         ' |======= SPECIFIC START -->
-        Public Shared Function title(ByVal text As String, Optional between_x_symbol As String = "|", Optional between_y_symbol As String = "-", Optional tab As String = Nothing) 'As String
+        Public Shared Function title(ByVal text As String, Optional between_x_symbol As String = Nothing, Optional between_y_symbol As String = Nothing, Optional tab As String = Nothing) 'As String
+
+            If between_x_symbol Is Nothing Then
+
+                between_x_symbol = "|"
+
+            End If
+
+            If between_y_symbol Is Nothing Then
+
+                between_y_symbol = "-"
+
+            End If
 
             tab = getTab(tab)
 
@@ -187,7 +190,7 @@
 
             For i = 1 To text.Length
 
-                symb_y &= "-"
+                symb_y &= between_y_symbol
 
             Next
 
@@ -243,11 +246,11 @@
 
         End Sub
 
-        Public Shared Sub var_dump(expression)
+        'Public Shared Sub dump(expression)
 
-            Debug.Print(expression)
+        'Debug.Print(expression)
 
-        End Sub
+        'End Sub
 
         ' <-- SPECIFIC STOP =======|
 
@@ -342,7 +345,7 @@
 
         End Function
 
-        Public Shared Function is_file(ByVal f_path as String)
+        Public Shared Function is_file(ByVal f_path As String)
 
             Return Core.Supports.File.is_file(f_path)
 
@@ -367,14 +370,51 @@
             Return Nothing
 
         End Function
-        
-        Public Shared Function file_gets_contents(ByVal path As String, Optional ByVal toText As Boolean = True)
+
+        Public Shared Function file_gets_contents(ByVal path As String, Optional ByVal toText As Boolean = True, ByVal Optional error_out As Boolean = True)
 
             Dim file = New Core.Supports.File(path)
 
-            Return file.getContents(toText)
+            Dim content = file.getContents(toText)
+
+            If is_null(content) And error_out = True Then
+
+                out_red(file.getLastError)
+
+            End If
+
+            Return content
 
         End Function
+
+        Public Shared Function file_put_contents(ByVal path As String, ByVal content As Object, ByVal Optional error_out As Boolean = True) As Boolean
+
+            Dim file = New Core.Supports.File(path)
+
+            Dim exec = file.setContents(content)
+
+            If is_null(exec) And error_out = True Then
+
+                out_red(file.getLastError)
+
+            End If
+
+            Return exec
+
+        End Function
+
+        Public Shared Function full_path(ByVal path As String, ByVal computer As Object) As String
+
+            Return computer.FileSystem.GetFileInfo(path).ToString
+
+        End Function
+
+        Public Shared Function file_size(ByVal path As String) As Double
+
+            Return FileLen(path)
+
+        End Function
+
 
         ' <-- FILE STOP =======|
 
