@@ -4,6 +4,26 @@
 
         Protected error_message(-1) As String
 
+        Public Sub eachError()
+
+            If Me.error_message.Length = 0 Then
+
+                Global.Helper.out_red("Aucune erreur !")
+
+                Exit Sub
+
+            End If
+
+            Global.Helper.out_red(Global.Helper.title("LE PARCOUR D'ERREUR"))
+
+            For Each value In Me.error_message
+
+                Global.Helper.out_red(value, True, "        ")
+
+            Next
+
+        End Sub
+
         Public Function getError(Optional ByVal key = Nothing)
 
             If key IsNot Nothing Then
@@ -17,6 +37,12 @@
         End Function
 
         Public Function getLastError()
+
+            If Me.error_message.Length = 0 Then
+
+                Return False
+
+            End If
 
             Return Me.error_message(Me.error_message.Length - 1)
 
