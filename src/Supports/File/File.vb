@@ -18,6 +18,12 @@ Namespace Global.Core.Supports
 
         End Sub
 
+        Public Shared Function getInstance(Optional ByVal path = Nothing)
+
+            Return New File(path)
+
+        End Function
+
         Public Function addLine(ByVal contents)
 
             Return Me.addText(vbLf & contents.ToString)
