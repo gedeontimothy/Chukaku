@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+
 Namespace Global.Core.Supports
 
     Public Class File
@@ -16,6 +17,57 @@ Namespace Global.Core.Supports
             End If
 
         End Sub
+
+        Public Function addLine(ByVal contents)
+
+            Return Me.addText(vbLf & contents.ToString)
+
+        End Function
+
+        Public Function addText(ByVal contents)
+
+            If Me.currentExists() Then
+
+                Try
+
+                    System.IO.File.AppendAllText(Me.current_file_path, contents)
+
+                    Return True
+
+                Catch ex As System.UnauthorizedAccessException
+
+                    Me.addError("L'appelant n'a pas l'autorisation requise.")
+
+                Catch ex As System.ArgumentNullException
+
+                    Me.addError("path a la valeur null.")
+
+                Catch ex As System.ArgumentException
+
+                    Me.addError("path est une chaîne de longueur nulle, ne contient que des espaces blancs ou contient un ou plusieurs caractères non valides comme défini par Public Shared ReadOnly InvalidPathChars As Char().")
+
+                Catch ex As System.IO.PathTooLongException
+
+                    Me.addError(Global.Helper.out_text("Le chemin d'accès, le nom de fichier spécifié ou les deux dépassent la longueur maximale définie par le système.") &
+                                Global.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins d'accès et les noms de fichiers ne doivent pas comporter plus de 248 et 260 caractères, respectivement."))
+
+                Catch ex As System.IO.DirectoryNotFoundException
+
+                    Me.addError("Le chemin d'accès spécifié n'est pas valide (par exemple, le répertoire n'existe pas ou il se trouve sur un lecteur non mappé).")
+
+                Catch ex As System.NotSupportedException
+
+                    Me.addError("Le format de path n'est pas valide.")
+
+                End Try
+
+                Return False
+
+            End If
+
+            Return Nothing
+
+        End Function
 
         Public Function readLineCurrentError() As Boolean
 
