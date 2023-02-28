@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+
 Namespace Global
 
     Public Class Helper
@@ -264,17 +265,33 @@ Namespace Global
 
         ' |======= CHECKER START -->
 
+        Public Shared Function is_double(ByVal value, Optional strict = False) As Boolean
+
+            Return is_null(value) = False And (value.GetType().ToString = "System.Double" Or (is_int(value) = True And strict = False))
+
+        End Function
+
+        Public Shared Function is_int(ByVal value) As Boolean
+
+            Return is_null(value) = False And (value.GetType().ToString = "System.Int32" Or value.GetType().ToString = "System.Int64" Or value.GetType().ToString = "System.Int16" Or value.GetType().ToString = "System.UInt32")
+
+        End Function
+
+        Public Shared Function is_string(ByVal value) As Boolean
+
+            Return is_null(value) = False And value.GetType().ToString = "System.String"
+
+        End Function
+
         Public Shared Function is_null(ByVal value)
 
             If value Is Nothing Then
 
                 Return True
 
-            Else
-
-                Return False
-
             End If
+
+            Return False
 
         End Function
 
