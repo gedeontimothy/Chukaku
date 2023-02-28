@@ -353,7 +353,7 @@ Namespace Global
 
         Public Shared Function is_dir(ByVal path As String)
 
-            Return Core.Supports.Dir.is_dir(path)
+            Return Core.Supports.Dir.isDir(path)
 
         End Function
 
@@ -412,6 +412,12 @@ Namespace Global
         Public Shared Function file_size(ByVal path As String) As Double
 
             Return FileLen(path)
+
+        End Function
+
+        Public Shared Function scan_dir(ByVal path As String)
+
+            Return Core.Supports.Dir.scanDir(path)
 
         End Function
 
