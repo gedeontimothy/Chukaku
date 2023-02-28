@@ -7,7 +7,12 @@ Namespace Global.Core.Supports
 
         End Sub
 
-        Public Shared Function root(Optional path As String = Nothing) As String
+        Public Shared Function scanDir(ByVal path As String)
+
+            Return Directory.GetDirectories(path)
+
+        End Function
+        Public Shared Function root(Optional ByVal path As String = Nothing) As String
 
             If path IsNot Nothing Then
 
@@ -24,7 +29,13 @@ Namespace Global.Core.Supports
 
         End Function
 
-        Public Shared Function is_dir(path)
+        Public Shared Function dirFiles(ByVal path As String)
+
+            Return System.IO.Directory.GetFiles(path)
+
+        End Function
+
+        Public Shared Function isDir(path)
 
             If Dir.exists(path) = False Then
 
