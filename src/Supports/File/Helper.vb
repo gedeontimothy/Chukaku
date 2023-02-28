@@ -42,7 +42,7 @@
 
                 Return Nothing
 
-            ElseIf Dir.is_dir(file_path) = False
+            ElseIf Dir.isDir(file_path) = False
 
                 Return True
 

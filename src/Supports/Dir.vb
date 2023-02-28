@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+
 Namespace Global.Core.Supports
 
     Public Class Dir
@@ -12,6 +13,7 @@ Namespace Global.Core.Supports
             Return Directory.GetDirectories(path)
 
         End Function
+
         Public Shared Function root(Optional ByVal path As String = Nothing) As String
 
             If path IsNot Nothing Then
