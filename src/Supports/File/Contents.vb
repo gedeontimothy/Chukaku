@@ -69,6 +69,18 @@
 
         End Function
 
+        Public Function countLines()
+
+            If Me.currentExists() Then
+
+                Return Me.getContents(False).Length
+
+            End If
+
+            Return Nothing
+
+        End Function
+
     End Class
 
 End Namespace
