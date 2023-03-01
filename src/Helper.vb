@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Namespace Global
+Namespace Global.Chukaku
 
     Public Class Helper
 
@@ -346,31 +346,31 @@ Namespace Global
 
         Public Shared Function file_exists(ByVal file_path As String) As Boolean
 
-            Return Core.Supports.File.exists(file_path)
+            Return Chukaku.Supports.File.exists(file_path)
 
         End Function
 
         Public Shared Function dir_exists(ByVal path As String) As Boolean
 
-            Return Core.Supports.Dir.exists(path)
+            Return Chukaku.Supports.Dir.exists(path)
 
         End Function
 
         Public Shared Function root(Optional ByVal path As String = Nothing) As String
 
-            Return Core.Supports.Dir.root(path)
+            Return Chukaku.Supports.Dir.root(path)
 
         End Function
 
         Public Shared Function is_file(ByVal f_path As String)
 
-            Return Core.Supports.File.is_file(f_path)
+            Return Chukaku.Supports.File.is_file(f_path)
 
         End Function
 
         Public Shared Function is_dir(ByVal path As String)
 
-            Return Core.Supports.Dir.isDir(path)
+            Return Chukaku.Supports.Dir.isDir(path)
 
         End Function
 
@@ -390,7 +390,7 @@ Namespace Global
 
         Public Shared Function file_gets_contents(ByVal path As String, Optional ByVal toText As Boolean = True, ByVal Optional error_out As Boolean = True)
 
-            Dim file = New Core.Supports.File(path)
+            Dim file = New Chukaku.Supports.File(path)
 
             Dim content = file.getContents(toText)
 
@@ -406,7 +406,7 @@ Namespace Global
 
         Public Shared Function file_put_contents(ByVal path As String, ByVal content As Object, ByVal Optional error_out As Boolean = True) As Boolean
 
-            Dim file = New Core.Supports.File(path)
+            Dim file = New Chukaku.Supports.File(path)
 
             Dim exec = file.setContents(content)
 
@@ -434,7 +434,7 @@ Namespace Global
 
         Public Shared Function scan_dir(ByVal path As String)
 
-            Return Core.Supports.Dir.scanDir(path)
+            Return Chukaku.Supports.Dir.scanDir(path)
 
         End Function
 

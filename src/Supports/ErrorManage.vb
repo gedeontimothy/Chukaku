@@ -1,4 +1,4 @@
-﻿Namespace Global.Core.Supports
+﻿Namespace Global.Chukaku.Supports
 
     Public MustInherit Class ErrorManage
 
@@ -8,17 +8,17 @@
 
             If Me.error_message.Length = 0 Then
 
-                Global.Helper.out_red("Aucune erreur !")
+                Chukaku.Helper.out_red("Aucune erreur !")
 
                 Exit Sub
 
             End If
 
-            Global.Helper.out_red(Global.Helper.title("LE PARCOUR D'ERREUR"))
+            Chukaku.Helper.out_red(Chukaku.Helper.title("LE PARCOUR D'ERREUR"))
 
             For Each value In Me.error_message
 
-                Global.Helper.out_red(value, True, "        ")
+                Chukaku.Helper.out_red(value, True, "        ")
 
             Next
 
@@ -76,7 +76,7 @@
 
             If out = True Then
 
-                Me.error_message(key) = Helper.title("Error N°" & key + 1, "||", "=") & Helper.out_text(message)
+                Me.error_message(key) = Chukaku.Helper.title("Error N°" & key + 1, "||", "=") & Chukaku.Helper.out_text(message)
 
             Else
 

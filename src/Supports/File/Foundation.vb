@@ -1,7 +1,7 @@
-﻿Namespace Global.Core.Supports.FileServices
+﻿Namespace Global.Chukaku.Supports.FileServices
     Public Class Foundation
 
-        Inherits Global.Core.Supports.ErrorManage
+        Inherits Global.Chukaku.Supports.ErrorManage
 
         Protected current_file_path As String = Nothing
 

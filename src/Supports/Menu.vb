@@ -1,8 +1,8 @@
-﻿Namespace Global.Core.Supports
+﻿Namespace Global.Chukaku.Supports
 
     Public Class Menu
 
-        Inherits Helper
+        Inherits Chukaku.Helper
 
         Private Shared instance
 

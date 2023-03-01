@@ -1,4 +1,4 @@
-﻿Namespace Global.Core.Supports.FileServices
+﻿Namespace Global.Chukaku.Supports.FileServices
 
     Public Class Helper
 

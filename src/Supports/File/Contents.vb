@@ -1,8 +1,8 @@
-﻿Namespace Global.Core.Supports.FileServices
+﻿Namespace Global.Chukaku.Supports.FileServices
 
     Public Class Contents
 
-        Inherits Core.Supports.FileServices.Helper
+        Inherits Chukaku.Supports.FileServices.Helper
 
         Public Function setContents(ByVal contents) As Boolean
 
@@ -16,8 +16,8 @@
 
                 Catch ex As System.IO.PathTooLongException
 
-                    Me.addError(Global.Helper.out_text("Le chemin d'accès, le nom de fichier spécifié ou les deux dépassent la longueur maximale définie par le système.") &
-                        Global.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins d'accès et les noms de fichiers ne doivent pas comporter plus de 248 et 260 caractères, respectivement."), False)
+                    Me.addError(Chukaku.Helper.out_text("Le chemin d'accès, le nom de fichier spécifié ou les deux dépassent la longueur maximale définie par le système.") &
+                        Chukaku.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins d'accès et les noms de fichiers ne doivent pas comporter plus de 248 et 260 caractères, respectivement."), False)
 
                 Catch ex As System.IO.DirectoryNotFoundException
 
@@ -29,8 +29,8 @@
 
                 Catch ex As System.UnauthorizedAccessException
 
-                    Me.addError(Global.Helper.out_text("Path a spécifié un fichier qui est en lecture seule.ou Cette opération n'est pas prise en charge sur") &
-                                Global.Helper.out_text("la plateforme actuelle.ou path a spécifié un répertoire.ou L'appelant n'a pas l'autorisation requise."), False)
+                    Me.addError(Chukaku.Helper.out_text("Path a spécifié un fichier qui est en lecture seule.ou Cette opération n'est pas prise en charge sur") &
+                                Chukaku.Helper.out_text("la plateforme actuelle.ou path a spécifié un répertoire.ou L'appelant n'a pas l'autorisation requise."), False)
 
                 Catch ex As System.NotSupportedException
 

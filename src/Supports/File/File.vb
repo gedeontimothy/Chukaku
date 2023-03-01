@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Namespace Global.Core.Supports
+Namespace Global.Chukaku.Supports
 
     Public Class File
 
@@ -54,8 +54,8 @@ Namespace Global.Core.Supports
 
                 Catch ex As System.IO.PathTooLongException
 
-                    Me.addError(Global.Helper.out_text("Le chemin d'accès, le nom de fichier spécifié ou les deux dépassent la longueur maximale définie par le système.") &
-                                Global.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins d'accès et les noms de fichiers ne doivent pas comporter plus de 248 et 260 caractères, respectivement."))
+                    Me.addError(Chukaku.Helper.out_text("Le chemin d'accès, le nom de fichier spécifié ou les deux dépassent la longueur maximale définie par le système.") &
+                                Chukaku.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins d'accès et les noms de fichiers ne doivent pas comporter plus de 248 et 260 caractères, respectivement."))
 
                 Catch ex As System.IO.DirectoryNotFoundException
 
@@ -103,8 +103,8 @@ Namespace Global.Core.Supports
 
                 Catch ex As System.IO.PathTooLongException
 
-                    Me.addError(Global.Helper.out_text("path dépasse la longueur maximale définie par le système.") &
-                                Global.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins et les noms de fichiers ne doivent pas dépasser, respectivement, 248 et 260 caractères."))
+                    Me.addError(Chukaku.Helper.out_text("path dépasse la longueur maximale définie par le système.") &
+                                Chukaku.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins et les noms de fichiers ne doivent pas dépasser, respectivement, 248 et 260 caractères."))
 
                 Catch ex As System.IO.IOException
 
@@ -154,8 +154,8 @@ Namespace Global.Core.Supports
 
                 Catch ex As System.IO.PathTooLongException
 
-                    Me.addError(Global.Helper.out_text("Le chemin d'accès, le nom de fichier spécifié ou les deux dépassent la longueur maximale définie par le système.") &
-                                Global.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins d'accès et les noms de fichiers ne doivent pas comporter plus de 248 et 260 caractères, respectivement."))
+                    Me.addError(Chukaku.Helper.out_text("Le chemin d'accès, le nom de fichier spécifié ou les deux dépassent la longueur maximale définie par le système.") &
+                                Chukaku.Helper.out_text("Par exemple, sur les plateformes Windows, les chemins d'accès et les noms de fichiers ne doivent pas comporter plus de 248 et 260 caractères, respectivement."))
 
                 Catch ex As System.IO.DirectoryNotFoundException
 
