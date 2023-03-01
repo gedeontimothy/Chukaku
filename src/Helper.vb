@@ -265,6 +265,12 @@ Namespace Global.Chukaku
 
         ' |======= CHECKER START -->
 
+        Public Shared Function is_bool(ByVal value) As Boolean
+
+            Return is_null(value) = False And value.GetType().ToString = "System.Boolean"
+
+        End Function
+
         Public Shared Function is_double(ByVal value, Optional strict = False) As Boolean
 
             Return is_null(value) = False And (value.GetType().ToString = "System.Double" Or (is_int(value) = True And strict = False))
