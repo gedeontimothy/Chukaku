@@ -24,6 +24,98 @@ Namespace Global.Chukaku.Supports
 
         End Function
 
+        Public Function empty()
+
+            If Me.currentExists() Then
+
+                Return Chukaku.Helper.empty(Me.getContents)
+
+            End If
+
+            Return Nothing
+
+        End Function
+
+        Public Function updateLine(ByVal line As Integer, ByVal contents As String, Optional ByVal replace As Boolean = True)
+
+            Dim lines = lineExist(line, True)
+
+            line -= 1
+
+            If Chukaku.Helper.is_null(lines) = False And Chukaku.Helper.is_array(lines) Then
+
+                lines(line) = contents
+
+                Return Me.setContents(Join(lines, vbLf))
+
+            End If
+
+            Return lines
+
+        End Function
+
+        Public Function removeLine(ByVal line As Integer)
+
+            Dim lines = lineExist(line, True)
+
+            line -= 1
+
+            If Chukaku.Helper.is_null(lines) = False And Chukaku.Helper.is_array(lines) Then
+
+                lines = (Function(ln)
+
+                             Dim tmp_conv() As String = ln
+
+                             Return tmp_conv.ToList
+
+                         End Function)(lines)
+
+                lines.RemoveAt(line)
+
+                Return Me.setContents(Join(lines.toArray, vbLf))
+
+            End If
+
+            Return lines
+
+        End Function
+
+        Public Function lineExist(ByVal line As Integer, Optional ByVal return_lines As Object = False)
+
+            Dim lines = Me.getContents(False)
+
+            line -= 1
+
+            If Chukaku.Helper.is_array(lines) And line >= 0 And lines.Length > line Then
+
+                If return_lines Is Nothing Then
+
+                    Return lines(line)
+
+                ElseIf return_lines = False Then
+
+                    Return True
+
+                ElseIf return_lines = True Then
+
+                    Return lines
+
+                End If
+
+            End If
+
+            Me.addError("La ligne" & (line + 1) & " n'existe pas !")
+
+            Return False
+
+        End Function
+
+        Public Function getLine(ByVal line As Integer)
+
+            Return lineExist(line, Nothing)
+
+        End Function
+
         Public Function addLine(ByVal contents)
 
             Return Me.addText(vbLf & contents.ToString)
